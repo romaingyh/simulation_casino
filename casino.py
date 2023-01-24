@@ -27,7 +27,7 @@ def casino_simulation(alpha, Y0, duration, earn_function):
 
     # Calculer le nombre de joueurs ayant eu un gain avant chaque instant de temps t
     N_t = np.zeros(duration + 1, dtype=int)
-    for t in range(1, duration + 1):
+    for t in range(0, duration + 1):
         # N_t[t] = np.max( [i for i in range(duration+1) if T[i] <= t] )
         N_t[t] = np.argmax(np.where(T <= t))
 
@@ -37,7 +37,7 @@ def casino_simulation(alpha, Y0, duration, earn_function):
     # Compute player earnings
     print(N_t[0])
     player_earnings = np.zeros(duration + 1)
-    for t in range(1, duration + 1):
+    for t in range(0, duration + 1):
         player_earnings[t] = np.sum(gains[: N_t[t]])
 
     # Calculer le capital du casino à chaque instant de temps t
